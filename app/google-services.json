@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "103223631802",
+    "firebase_url": "https://solgik-dc546.firebaseio.com",
+    "project_id": "solgik-dc546",
+    "storage_bucket": "solgik-dc546.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:103223631802:android:86f7d757d6e18373978783",
+        "android_client_info": {
+          "package_name": "com.example.solgikb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "103223631802-liegljgercufbgcdsj55f54lcdn7uldr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.solgikb",
+            "certificate_hash": "bd77035614945ddb2f52f0282d8c5e1db91bc297"
+          }
+        },
+        {
+          "client_id": "103223631802-36hssnhk7nqktmls9mk4t7ml3turnj82.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBY3QL8ua4_Hz-1TFwoDXTc25wutHzuxFs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "103223631802-36hssnhk7nqktmls9mk4t7ml3turnj82.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

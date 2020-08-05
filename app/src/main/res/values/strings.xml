@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">SolgikB</string>
+
+    <!-- Main Tabs -->
+    <string name="maintab1">도서관</string>
+    <string name="maintab2">내 서재</string>
+
+    <!-- Home Fragment -->
+    <string name="today_recommend">오늘의 추천도서</string>
+
+    <!-- MyLib Fragment -->
+    <string name="my_info">내 정보</string>
+    <string name="check_status">대출 현황</string>
+    <string formatted="false" name="term_format"> (%s ~ %s)</string>
+
+    <!-- Icon Description -->
+    <string name="notice_btn">알림버튼</string>
+    <string name="search_btn">검색버튼</string>
+    <string name="edit_btn">편집버튼</string>
+
 </resources>

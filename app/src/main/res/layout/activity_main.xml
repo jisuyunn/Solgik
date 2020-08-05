@@ -10,11 +10,54 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <com.google.android.material.tabs.TabLayout
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent" />
+            android:paddingTop="@dimen/top_bar_padding"
+            android:paddingLeft="@dimen/top_bar_padding"
+            android:paddingRight= "@dimen/top_bar_padding"
+            android:background="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.tabs.TabLayout
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                app:tabRippleColor="@android:color/transparent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:tabMode="scrollable"
+                app:tabTextAppearance="@style/tabText"
+                app:tabIndicatorColor="@color/black"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorHeight="@dimen/tab_indicator_height"
+                app:tabSelectedTextColor="@color/black"
+                app:tabTextColor="@color/gray"
+                app:tabPaddingBottom="@dimen/tab_padding_bottom"
+                app:tab_select_adapter="@{vm.tabSelectedListener}"
+                app:setupWithViewPager="@{pager}"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_notification"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/notice_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/top_bar"
+            app:view_pager_adapter="@{vm.adapter}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

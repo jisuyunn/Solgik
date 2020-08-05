@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Designs -->
+    <dimen name="main_title_textsize">20sp</dimen>
+    <dimen name="main_title_margin">20dp</dimen>
+    <dimen name="sub_title_textsize">18sp</dimen>
+    <dimen name="sub_title_margin">15dp</dimen>
+    <dimen name="desc_textsize">15sp</dimen>
+    <dimen name="desc_margin">6dp</dimen>
+
+    <!-- Main Tabs -->
+    <dimen name="top_bar_padding">15dp</dimen>
+    <dimen name="tab_indicator_height">4dp</dimen>
+    <dimen name="tab_padding_bottom">6dp</dimen>
+    <dimen name="tab_selected_textsize">25sp</dimen>
+
+    <!-- Home Fragment -->
+    <dimen name="search_box_height">30dp</dimen>
+    <dimen name="search_box_s_margin">80dp</dimen>
+    <dimen name="search_box_e_margin">40dp</dimen>
+    <dimen name="search_box_radius">5dp</dimen>
+    <dimen name="search_ic_width">40dp</dimen>
+    <dimen name="today_recommend_margin">20dp</dimen>
+    <dimen name="today_recommend_height">250dp</dimen>
+
+    <!-- MyLib Fragment -->
+    <dimen name="mylib_margin_top">5dp</dimen>
+    <dimen name="mylib_padding">15dp</dimen>
+    <dimen name="d_day_padding_left">15dp</dimen>
+    <dimen name="d_day_padding_top">5dp</dimen>
+    <dimen name="d_day_radius">5dp</dimen>
+
+    <!-- Book Item -->
+    <dimen name="book_padding">15dp</dimen>
+    <dimen name="book_image_width">80dp</dimen>
+    <dimen name="book_image_height">120dp</dimen>
+
+    <!-- Icon -->
+    <dimen name="notice_icon_margin">5dp</dimen>
+
+</resources>

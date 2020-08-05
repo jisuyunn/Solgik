@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="user" type="com.example.solgikb.data.model.User"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/mylib_padding">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/mainTitle.mypage"
+            android:text="@string/my_info"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_marginTop="@dimen/sub_title_margin"
+            style="@style/subTitle.mypage"
+            android:text="@{user.name}"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/title"/>
+
+        <TextView
+            android:id="@+id/address"
+            android:text="@{user.address}"
+            style="@style/subTitle.mypage"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/name"/>
+
+        <TextView
+            android:id="@+id/phone"
+            android:text="@{user.phoneNum}"
+            style="@style/subTitle.mypage"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/address"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/main_title_margin"
+            android:src="@drawable/ic_edit"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/edit_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/title" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

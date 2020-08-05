@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="vm" type="com.example.solgikb.ui.main.home.HomeViewModel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".HomeFragment">
+
+        <TextView
+            android:id="@+id/title"
+            android:text="서울시립도서관"
+            style="@style/subTitle.homeTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <EditText
+            android:id="@+id/search_box"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/search_box_height"
+            android:layout_marginStart="@dimen/search_box_s_margin"
+            android:layout_marginEnd="@dimen/search_box_e_margin"
+            android:layout_marginTop="@dimen/main_title_margin"
+            android:textSize="@dimen/sub_title_textsize"
+            android:background="@drawable/custom_search_box"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ImageButton
+            android:layout_width="@dimen/search_ic_width"
+            android:layout_height="@dimen/search_box_height"
+            android:contentDescription="@string/search_btn"
+            android:src="@drawable/ic_search"
+            android:background="@drawable/custom_search_ic_background"
+            app:layout_constraintEnd_toStartOf="@id/search_box"
+            app:layout_constraintTop_toTopOf="@id/search_box" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/today_recommend_height"
+            android:layout_marginTop="@dimen/today_recommend_margin"
+            android:background="@color/back_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_box">
+
+            <TextView
+                android:id="@+id/today_recommend"
+                android:text="@string/today_recommend"
+                style="@style/mainTitle.todayRecommend"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/book_rv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scrollbars="horizontal"
+                app:recycler_adapter="@{vm.bookLiveData}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/today_recommend"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

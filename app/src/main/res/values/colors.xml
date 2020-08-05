@@ -3,9 +3,9 @@
     <color name="colorPrimary">#A3DDD9</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+	<color name="mainColor">#77CEB0</color>
 
-
-    <!--Design colors-->
+	<!--Design colors-->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="light_gray">#EDEDED</color>
@@ -32,5 +32,4 @@
     <color name="planner_text">#414141</color>
     <color name="light_orange">#FF8700</color>
     <color name="light_purple">#6B56FF</color>
-
 </resources>

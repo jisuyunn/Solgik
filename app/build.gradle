@@ -27,11 +27,15 @@ android {
     buildFeatures{
         dataBinding = true
     }
-dataBinding{
-        enabled = true
-    }kotlinOptions {
+
+    dataBinding{
+            enabled = true
+    }
+    
+    kotlinOptions {
         jvmTarget = "1.8"
-    }}
+    }
+}
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -46,7 +50,7 @@ dependencies {
     //data binding
     kapt "com.android.databinding:compiler:$rootProject.databindingVersion"
 
-    // reactive ÇÊ¿ä¾øÀ»µí
+    // reactive ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
 

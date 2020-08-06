@@ -12,8 +12,7 @@
     <!-- Main Tabs -->
     <dimen name="top_bar_padding">15dp</dimen>
     <dimen name="tab_indicator_height">4dp</dimen>
-    <dimen name="tab_padding_bottom">6dp</dimen>
-    <dimen name="tab_selected_textsize">25sp</dimen>
+    <dimen name="tab_padding_bottom">4dp</dimen>
 
     <!-- Home Fragment -->
     <dimen name="search_box_height">30dp</dimen>

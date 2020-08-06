@@ -1,6 +1,8 @@
 package com.example.solgikb.ui.main
 
+import android.widget.TextView
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Observer
 import com.example.solgikb.R
 import com.example.solgikb.BR
 import com.example.solgikb.data.model.Book
@@ -20,8 +22,11 @@ class MainActivity: BaseActivity<ActivityMainBinding, MainViewModel>() {
 
 
     override fun initView() {
+        initTab()
+    }
+
+    fun initTab() {
         viewModel.initTabs(ViewPagerAdapter(supportFragmentManager,
-                listOf(getString(R.string.maintab1), getString(R.string.maintab2)),
                 listOf(HomeFragment(), MyLibFragment())))
     }
 

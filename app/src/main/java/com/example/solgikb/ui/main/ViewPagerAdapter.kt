@@ -10,12 +10,10 @@ import com.example.solgikb.ui.main.home.HomeFragment
 import com.example.solgikb.ui.main.mylib.MyLibFragment
 import java.util.*
 
-class ViewPagerAdapter(fm: FragmentManager, private val titles: List<CharSequence>,
+class ViewPagerAdapter(fm: FragmentManager,
                        private val fragments: List<Fragment>) :  FragmentStatePagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment = fragments[position]
-
-    override fun getPageTitle(position: Int): CharSequence = titles[position]
 
     override fun getCount(): Int = 2
 

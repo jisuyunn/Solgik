@@ -22,13 +22,13 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 app:tabRippleColor="@android:color/transparent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:tabMode="scrollable"
-                app:tabTextAppearance="@style/tabText"
                 app:tabIndicatorColor="@color/black"
                 app:tabIndicatorFullWidth="false"
                 app:tabIndicatorHeight="@dimen/tab_indicator_height"

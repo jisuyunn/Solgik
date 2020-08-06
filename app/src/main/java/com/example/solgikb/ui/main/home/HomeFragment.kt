@@ -1,6 +1,7 @@
 package com.example.solgikb.ui.main.home
 
 import android.content.Intent
+import android.widget.ImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.solgikb.BR
 import com.example.solgikb.R
@@ -11,6 +12,7 @@ import com.example.solgikb.ui.base.BaseFragment
 import com.example.solgikb.ui.base.BaseRecyclerView
 import com.example.solgikb.ui.bookdetail.BookDetailActivity
 import com.example.solgikb.utils.INTENT_EXTRA_BOOK_ID
+import kotlinx.android.synthetic.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment: BaseFragment<FragmentHomeBinding, HomeViewModel>() {
@@ -38,4 +40,6 @@ class HomeFragment: BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                     //startActivity(intent)
                 }) {}
     }
+
+
 }

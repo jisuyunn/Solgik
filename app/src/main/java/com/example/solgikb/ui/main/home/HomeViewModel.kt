@@ -15,7 +15,7 @@ class HomeViewModel(application: Application, private val repository: FirebaseRe
 
     private val _bookLiveData = MutableLiveData<String>()
     val bookLiveData = _bookLiveData.switchMap { id ->
-        liveData<List<Book?>>(coroutineContext) {
+        liveData(coroutineContext) {
             val result = repository.getBookListByUId(id)
             if (result is Result.Success) {
                 emit(result.data)

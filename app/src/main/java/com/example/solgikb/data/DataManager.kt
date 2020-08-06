@@ -14,8 +14,8 @@ interface DataManager {
     fun insertCheck(check: Check)
 
     suspend fun getUserById(id: String): Result<User>
-    suspend fun getCheckListByUId(id: String): Result<List<Check?>>
-    suspend fun getBookListById(id: List<String>): Result<List<Book?>>
-    suspend fun getBookListByUId(id: String): Result<List<Book?>>
+    suspend fun getCheckListByUId(id: String): Result<List<Check>>
+    suspend fun getBookListById(id: List<String>): Result<List<Book>>
+    suspend fun getBookListByUId(id: String): Result<List<Book>>
 
 }

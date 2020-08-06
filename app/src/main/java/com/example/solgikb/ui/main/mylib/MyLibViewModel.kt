@@ -17,7 +17,7 @@ class MyLibViewModel(application: Application, private val repository: FirebaseR
 
     private val _userLiveData = MutableLiveData<String>()
     val userLiveData = _userLiveData.switchMap { id ->
-        liveData<User>(coroutineContext) {
+        liveData(coroutineContext) {
             val result = repository.getUserById(id)
             if(result is Result.Success)
                 emit(result.data)
@@ -28,17 +28,17 @@ class MyLibViewModel(application: Application, private val repository: FirebaseR
     val dDay = MutableLiveData<String>()
     private val _checkLiveData = MutableLiveData<String>()
     val checkLiveData = _checkLiveData.switchMap { id ->
-        liveData<List<Check?>>(coroutineContext) {
+        liveData(coroutineContext) {
             val result = repository.getCheckListByUId(id)
             if (result is Result.Success) {
                 if(result.data.size > 0) {
                     check.postValue(result.data.get(0))
-                    dDay.postValue(calculatedDay(result.data.get(0)?.expectDate))
-                    val id = mutableListOf<String>()
+                    dDay.postValue(calculatedDay(result.data.get(0).expectDate))
+                    val BId = mutableListOf<String>()
                     result.data.forEach { data ->
-                        if(data != null) id.add(data.BId)
+                        BId.add(data.BId)
                     }
-                    _bookLiveData.postValue(id)
+                    _bookLiveData.postValue(BId)
                     emit(result.data)
                 }
             }
@@ -48,11 +48,11 @@ class MyLibViewModel(application: Application, private val repository: FirebaseR
     val checkTitle = MutableLiveData<String>()
     private val _bookLiveData = MutableLiveData<List<String>>()
     val bookLiveData = _bookLiveData.switchMap { id ->
-        liveData<List<Book?>>(coroutineContext) {
+        liveData(coroutineContext) {
             val result = repository.getBookListById(id)
             if (result is Result.Success) {
                 var title: String? = ""
-                if(result.data.size > 0) title = result.data.get(0)?.title
+                if(result.data.size > 0) title = result.data.get(0).title
                 if(result.data.size > 1) title += " 외 " + (result.data.size-1) + "권"
                 checkTitle.postValue(title)
                 emit(result.data)

@@ -45,9 +45,13 @@ class FirebaseRepository: DataManager {
 
     override suspend fun getUserById(id: String): Result<User> =
             suspendCoroutine { cont ->
-                userRef.addListenerForSingleValueEvent(object : ValueEventListener{
+                val query = userRef.orderByKey().equalTo(id).limitToFirst(1)
+                query.addListenerForSingleValueEvent(object : ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
-                        cont.resume(Result.Success(snapshot.child(id).getValue(User::class.java) as User))
+                        if(snapshot.hasChildren()) {
+                            val data = snapshot.children.elementAt(0).getValue(User::class.java)
+                            if(data != null) cont.resume(Result.Success(data))
+                        }
                     }
 
                     override fun onCancelled(error: DatabaseError) {
@@ -56,16 +60,15 @@ class FirebaseRepository: DataManager {
                 })
             }
 
-    override suspend fun getCheckListByUId(id: String): Result<List<Check?>> =
+    override suspend fun getCheckListByUId(id: String): Result<List<Check>> =
             suspendCoroutine { cont ->
-                checkRef.addListenerForSingleValueEvent(object : ValueEventListener{
+                val query = checkRef.orderByChild("uid").equalTo(id)
+                query.addListenerForSingleValueEvent(object : ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
-                        val checkList = mutableListOf<Check?>()
+                        val checkList = mutableListOf<Check>()
                         snapshot.children.forEach { data ->
                             val check = data.getValue(Check::class.java)
-                            if(check?.UId.equals(id) && check?.returnDate.equals("")) {
-                                checkList.add(check)
-                            }
+                            if(check != null && check.returnDate.equals("")) checkList.add(check)
                         }
                         cont.resume(Result.Success(checkList))
                     }
@@ -76,13 +79,14 @@ class FirebaseRepository: DataManager {
                 })
             }
 
-    override suspend fun getBookListById(id: List<String>): Result<List<Book?>> =
+    override suspend fun getBookListById(id: List<String>): Result<List<Book>> =
             suspendCoroutine { cont ->
                 bookRef.addListenerForSingleValueEvent(object : ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
-                        val bookList = mutableListOf<Book?>()
+                        val bookList = mutableListOf<Book>()
                         id.forEach { id ->
-                            bookList.add(snapshot.child(id).getValue(Book::class.java))
+                            val data = snapshot.child(id).getValue(Book::class.java)
+                            if(data != null) bookList.add(data)
                         }
                         cont.resume(Result.Success(bookList))
                     }
@@ -93,13 +97,14 @@ class FirebaseRepository: DataManager {
                 })
             }
 
-    override suspend fun getBookListByUId(id: String): Result<List<Book?>> =
+    override suspend fun getBookListByUId(id: String): Result<List<Book>> =
             suspendCoroutine { cont ->
                 bookRef.addListenerForSingleValueEvent(object : ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
-                        val bookList = mutableListOf<Book?>()
+                        val bookList = mutableListOf<Book>()
                         snapshot.children.forEach { data ->
-                            bookList.add(data.getValue(Book::class.java))
+                            val book = data.getValue(Book::class.java)
+                            if(book != null) bookList.add(book)
                         }
                         cont.resume(Result.Success(bookList))
                     }

@@ -8,22 +8,30 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:103223631802:android:86f7d757d6e18373978783",
+        "mobilesdk_app_id": "1:103223631802:android:0de8a69272c98bc5978783",
         "android_client_info": {
           "package_name": "com.example.solgikb"
         }
       },
       "oauth_client": [
         {
-          "client_id": "103223631802-liegljgercufbgcdsj55f54lcdn7uldr.apps.googleusercontent.com",
+          "client_id": "103223631802-8catg67o2sfeab4af8i5frhtjm3794bg.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.solgikb",
-            "certificate_hash": "bd77035614945ddb2f52f0282d8c5e1db91bc297"
+            "certificate_hash": "ece5a156c726ff8dc11a92ae41f4a93fec3acb06"
           }
         },
         {
-          "client_id": "103223631802-36hssnhk7nqktmls9mk4t7ml3turnj82.apps.googleusercontent.com",
+          "client_id": "103223631802-2ik7ee49brls2v2rhgt7uh2gefd27mjn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.solgikb",
+            "certificate_hash": "b0214a627cd79192ed804ab994cef894a4dbd18b"
+          }
+        },
+        {
+          "client_id": "103223631802-pfkr2jm1k1h4mse2v16c0461321jlode.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -36,7 +44,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "103223631802-36hssnhk7nqktmls9mk4t7ml3turnj82.apps.googleusercontent.com",
+              "client_id": "103223631802-pfkr2jm1k1h4mse2v16c0461321jlode.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

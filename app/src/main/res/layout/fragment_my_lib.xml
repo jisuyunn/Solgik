@@ -21,7 +21,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/mylib_margin_top"
-            android:padding="@dimen/mylib_padding"
+            android:paddingTop="@dimen/mylib_padding"
+            android:paddingLeft="@dimen/mylib_padding"
+            android:paddingRight="@dimen/mylib_padding"
             android:background="@color/white"
             app:layout_constraintTop_toBottomOf="@id/mypage"
             app:layout_constraintBottom_toBottomOf="parent">
@@ -69,6 +71,7 @@
                 android:layout_height="0dp"
                 android:scrollbars="none"
                 android:background="@color/white"
+                android:overScrollMode="never"
                 app:recycler_adapter="@{vm.bookLiveData}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/term"

@@ -5,5 +5,6 @@ data class Book(
         var title: String = "",
         var author: String = "",
         var publisher: String = "",
-        var status: String = ""
+        var status: String = "",
+        var imageurl: String = ""
 )

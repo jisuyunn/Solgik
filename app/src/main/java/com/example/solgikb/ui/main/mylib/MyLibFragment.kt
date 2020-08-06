@@ -24,8 +24,7 @@ class MyLibFragment: BaseFragment<FragmentMyLibBinding, MyLibViewModel>() {
     }
 
     fun initData() {
-        viewModel.getUserById("-MDjV4gJl2BciZSSsuB1")
-        viewModel.getCheckListByUId("-MDjV4gJl2BciZSSsuB1")
+        viewModel.initData()
         viewModel.checkLiveData.observe(viewLifecycleOwner, Observer {
 
         })

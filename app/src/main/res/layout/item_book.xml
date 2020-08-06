@@ -14,6 +14,7 @@
             android:id="@+id/image"
             android:layout_width="@dimen/book_image_width"
             android:layout_height="@dimen/book_image_height"
+            app:image_src="@{book.imageurl}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 

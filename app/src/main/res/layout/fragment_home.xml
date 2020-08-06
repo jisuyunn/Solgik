@@ -43,7 +43,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/today_recommend_height"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/today_recommend_margin"
             android:background="@color/back_gray"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,13 +59,12 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/book_rv"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:scrollbars="horizontal"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
                 app:recycler_adapter="@{vm.bookLiveData}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/today_recommend"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
 
 

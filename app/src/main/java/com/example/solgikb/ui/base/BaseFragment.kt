@@ -32,6 +32,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : Fragment()
      */
     abstract fun initView()
 
+    abstract fun observeChange()
     //private var isSetBackButtonValid = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +55,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : Fragment()
         binding.setVariable(bindingVariable, viewModel)
         binding.executePendingBindings()
         initView()
+        observeChange()
     }
 
 }

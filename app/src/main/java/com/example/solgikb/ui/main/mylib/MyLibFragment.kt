@@ -10,7 +10,10 @@ import com.example.solgikb.databinding.ItemBookBinding
 import com.example.solgikb.ui.base.BaseFragment
 import com.example.solgikb.ui.base.BaseRecyclerView
 import com.example.solgikb.ui.bookdetail.BookDetailActivity
+import com.example.solgikb.ui.prevlib.PrevLibActivity
+import com.example.solgikb.ui.prevlib.PrevLibViewModel
 import com.example.solgikb.utils.INTENT_EXTRA_BOOK_ID
+import com.example.solgikb.utils.observe
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyLibFragment: BaseFragment<FragmentMyLibBinding, MyLibViewModel>() {
@@ -21,24 +24,22 @@ class MyLibFragment: BaseFragment<FragmentMyLibBinding, MyLibViewModel>() {
     override fun initView() {
         initData()
         initRecyclerView()
+        binding.btn.setOnClickListener { v ->
+            startActivity(Intent(activity, PrevLibActivity::class.java))
+        }
+    }
+
+    override fun observeChange() {
+        observe(viewModel.checkLiveData) {}
     }
 
     fun initData() {
         viewModel.initData()
-        viewModel.checkLiveData.observe(viewLifecycleOwner, Observer {
-
-        })
     }
 
     fun initRecyclerView() {
-        binding.bookRv.adapter = object : BaseRecyclerView.Adapter<Book, ItemBookBinding>(
-                layoutResId = R.layout.item_book,
-                bindingVariableId = BR.book,
-                itemClick = { item ->
-                    val intent = object : Intent(context, BookDetailActivity::class.java) {}
-                    intent.putExtra(INTENT_EXTRA_BOOK_ID, item.BId)
-                    //startActivity(intent)
-                }) {}
+
     }
+
 
 }

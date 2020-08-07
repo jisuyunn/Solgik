@@ -25,21 +25,16 @@ class HomeFragment: BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         initRecyclerView()
     }
 
+    override fun observeChange() { }
+
     fun initData() {
         viewModel.recommendBookByUId("")
     }
 
     fun initRecyclerView() {
         binding.bookRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        binding.bookRv.adapter = object : BaseRecyclerView.Adapter<Book, ItemBookBinding>(
-                layoutResId = R.layout.item_book,
-                bindingVariableId = BR.book,
-                itemClick = { item ->
-                    val intent = object : Intent(context, BookDetailActivity::class.java) {}
-                    intent.putExtra(INTENT_EXTRA_BOOK_ID, item.BId)
-                    //startActivity(intent)
-                }) {}
     }
+
 
 
 }

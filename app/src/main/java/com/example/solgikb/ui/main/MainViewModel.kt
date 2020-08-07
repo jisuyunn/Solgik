@@ -17,7 +17,7 @@ class MainViewModel(application: Application): BaseViewModel() {
     private val _adapter = MutableLiveData<ViewPagerAdapter>()
     val adapter: LiveData<ViewPagerAdapter> get() = _adapter
 
-    var tabSelectedListener = object : TabLayout.OnTabSelectedListener {
+    val tabSelectedListener = object : TabLayout.OnTabSelectedListener {
         override fun onTabReselected(tab: TabLayout.Tab?) {}
 
         override fun onTabUnselected(tab: TabLayout.Tab?) {

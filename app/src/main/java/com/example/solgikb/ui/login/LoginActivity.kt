@@ -9,6 +9,7 @@ import com.example.solgikb.databinding.ActivityLoginBinding
 import com.example.solgikb.ui.base.BaseActivity
 import com.example.solgikb.ui.main.MainActivity
 import com.example.solgikb.utils.REQUEST_CODE_GOOGLE_SIGN_IN
+import com.example.solgikb.utils.observe
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity: BaseActivity<ActivityLoginBinding, LoginViewModel>() {
@@ -22,16 +23,20 @@ class LoginActivity: BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                 startActivityForResult(it, REQUEST_CODE_GOOGLE_SIGN_IN)
             }
         }
-        viewModel.userLiveData.observe(this, Observer { it ->
+    }
+
+    override fun observeChange() {
+        observe(viewModel.userLiveData) { it ->
             if(it is Result.Success) {
                 startActivity(Intent(applicationContext, MainActivity::class.java))
                 finish()
             }
-        })
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         viewModel.handleOnActivityResult(requestCode, resultCode, data)
     }
+
 }

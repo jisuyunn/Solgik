@@ -59,7 +59,7 @@
 
             <TextView
                 android:id="@+id/dDay"
-                style="@style/mainTitle.dDay"
+                style="@style/dDay"
                 android:text="@{vm.dDay}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/title"/>
@@ -72,7 +72,8 @@
                 android:scrollbars="none"
                 android:background="@color/white"
                 android:overScrollMode="never"
-                app:recycler_adapter="@{vm.bookLiveData}"
+                app:recycler_items="@{vm.bookLiveData}"
+                app:recycler_adapter="@{vm.recyclerAdapter}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/term"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -81,6 +82,13 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <Button
+            android:id="@+id/btn"
+            style="@style/mainButton"
+            android:text="@string/prev_check_list"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:onClick="@{() -> vm.showPrevCheckList()}"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

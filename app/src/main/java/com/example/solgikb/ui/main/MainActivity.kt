@@ -23,4 +23,6 @@ class MainActivity: BaseActivity<ActivityMainBinding, MainViewModel>() {
                 listOf(HomeFragment(), MyLibFragment())))
     }
 
+    override fun observeChange() { }
+
 }

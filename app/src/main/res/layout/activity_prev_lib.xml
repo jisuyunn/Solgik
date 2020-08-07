@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="vm" type="com.example.solgikb.ui.prevlib.PrevLibViewModel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_gray"
+        tools:context=".ui.prevlib.PrevLibActivity">
+
+        <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/main_title_margin"
+                android:src="@drawable/back_icon"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/edit_btn" />
+
+            <TextView
+                style="@style/mainTitle.header"
+                android:text="@string/prev_check_list"/>
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:id="@+id/filter_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:background="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header">
+
+            <RadioGroup
+                android:id="@+id/filter_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:radio_check_listener="@{vm.radioCheckListener}">
+                <RadioButton
+                    android:id="@+id/week_filter"
+                    style="@style/filterButton"
+                    android:text="@string/week_filter"/>
+                <RadioButton
+                    android:id="@+id/month_filter"
+                    style="@style/filterButton"
+                    android:text="@string/month_filter"/>
+                <RadioButton
+                    android:id="@+id/three_month_filter"
+                    style="@style/filterButton"
+                    android:text="@string/three_month_filter"/>
+                <RadioButton
+                    android:id="@+id/set_term_filter"
+                    style="@style/filterButton"
+                    android:text="@string/set_term_filter"/>
+            </RadioGroup>
+
+        </ScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/book_rv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scrollbars="none"
+            android:background="@color/white"
+            android:layout_marginTop="5dp"
+            android:overScrollMode="never"
+            app:recycler_items="@{vm.bookLiveData}"
+            app:recycler_adapter="@{vm.recyclerAdapter}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/filter_scroll"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

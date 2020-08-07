@@ -35,7 +35,7 @@
                 app:tabSelectedTextColor="@color/black"
                 app:tabTextColor="@color/gray"
                 app:tabPaddingBottom="@dimen/tab_padding_bottom"
-                app:tab_select_adapter="@{vm.tabSelectedListener}"
+                app:tab_select_listener="@{vm.tabSelectedListener}"
                 app:setupWithViewPager="@{pager}"/>
 
             <ImageButton

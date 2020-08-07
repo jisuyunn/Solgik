@@ -1,7 +1,8 @@
-package com.example.solgikb.ui.main.home
+package com.example.solgikb.ui.prevlib
 
 import android.app.Application
 import android.content.Intent
+import android.widget.RadioGroup
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
@@ -16,14 +17,26 @@ import com.example.solgikb.ui.base.BaseViewModel
 import com.example.solgikb.ui.bookdetail.BookDetailActivity
 import com.example.solgikb.utils.INTENT_EXTRA_BOOK_ID
 
-class HomeViewModel(application: Application, private val repo: IRepository): BaseViewModel() {
+class PrevLibViewModel(application: Application, private val repo: IRepository): BaseViewModel() {
 
-    private val _bookLiveData = MutableLiveData<String>()
-    val bookLiveData = _bookLiveData.switchMap { id ->
-        liveData(coroutineContext) {
-            val result = repo.getBookListByUId(id)
-            if (result is Result.Success) {
-                emit(result.data)
+    private val _bookLiveData = MutableLiveData<Int>()
+    val bookLiveData = _bookLiveData.switchMap { i ->
+        liveData {
+            when(i) {
+                0,1,2 -> {
+                    val result = repo.getBookListByUId("-MDjV4gJl2BciZSSsuB1")
+                    if(result is Result.Success) emit(result.data)
+                }
+            }
+        }
+    }
+
+    val radioCheckListener = RadioGroup.OnCheckedChangeListener { group, id ->
+        if(group.checkedRadioButtonId == id) {
+            when(id) {
+                R.id.week_filter -> _bookLiveData.postValue(0)
+                R.id.month_filter -> _bookLiveData.postValue(1)
+                R.id.three_month_filter -> _bookLiveData.postValue(2)
             }
         }
     }
@@ -37,7 +50,4 @@ class HomeViewModel(application: Application, private val repo: IRepository): Ba
                 //startActivity(intent)
             }) {}
 
-    fun recommendBookByUId(id: String) {
-        _bookLiveData.postValue(id)
-    }
 }

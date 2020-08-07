@@ -1,6 +1,8 @@
 package com.example.solgikb.ui.main.home
 
+import android.content.Context
 import android.content.Intent
+import android.view.View
 import android.widget.ImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.solgikb.BR
@@ -11,7 +13,10 @@ import com.example.solgikb.databinding.ItemBookBinding
 import com.example.solgikb.ui.base.BaseFragment
 import com.example.solgikb.ui.base.BaseRecyclerView
 import com.example.solgikb.ui.bookdetail.BookDetailActivity
+import com.example.solgikb.ui.main.MainActivity
+import com.example.solgikb.ui.prevlib.PrevLibActivity
 import com.example.solgikb.utils.INTENT_EXTRA_BOOK_ID
+import com.example.solgikb.utils.observe
 import kotlinx.android.synthetic.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -25,7 +30,16 @@ class HomeFragment: BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         initRecyclerView()
     }
 
-    override fun observeChange() { }
+    override fun observeChange() {
+        observe(viewModel.sle) {
+          if(it != ""){
+              viewModel.searchBookByTitle(it)
+              initRecyclerView()
+              binding.rvLayout.visibility = View.GONE
+              binding.srLayout.visibility = View.VISIBLE
+          }
+        }
+    }
 
     fun initData() {
         viewModel.recommendBookByUId("")
@@ -33,6 +47,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     fun initRecyclerView() {
         binding.bookRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.bookSearchResult.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
 
 

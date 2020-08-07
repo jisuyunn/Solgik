@@ -133,4 +133,25 @@ class FirebaseSource {
                     }
                 })
             }
+
+    suspend fun getBookListByTitle(title: String): Result<List<Book>> =
+            suspendCoroutine { cont ->
+                bookRef.addListenerForSingleValueEvent(object : ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        val bookList = mutableListOf<Book>()
+                        snapshot.children.forEach { data ->
+                            val book = data.getValue(Book::class.java)
+                            if(book != null) {
+                                if(book.title == title)
+                                    bookList.add(book)
+                            }
+                        }
+                        cont.resume(Result.Success(bookList))
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        cont.resume(Result.Error(error.toException()))
+                    }
+                })
+            }
 }

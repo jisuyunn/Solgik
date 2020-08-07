@@ -15,9 +15,12 @@ import com.example.solgikb.ui.base.BaseRecyclerView
 import com.example.solgikb.ui.base.BaseViewModel
 import com.example.solgikb.ui.bookdetail.BookDetailActivity
 import com.example.solgikb.utils.INTENT_EXTRA_BOOK_ID
+import com.example.solgikb.utils.SingleLiveEvent
 
 class HomeViewModel(application: Application, private val repo: IRepository): BaseViewModel() {
 
+    val sle = SingleLiveEvent<String>()
+    val searchbooktitle = MutableLiveData<String>()
     private val _bookLiveData = MutableLiveData<String>()
     val bookLiveData = _bookLiveData.switchMap { id ->
         liveData(coroutineContext) {
@@ -40,4 +43,13 @@ class HomeViewModel(application: Application, private val repo: IRepository): Ba
     fun recommendBookByUId(id: String) {
         _bookLiveData.postValue(id)
     }
+
+    fun searchBookByTitle(title: String) {
+        _bookLiveData.postValue(title)
+    }
+
+    fun onClickSearch(){
+        sle.value = searchbooktitle.value
+    }
+
 }

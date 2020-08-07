@@ -29,6 +29,8 @@ class RepositoryImpl(val db: FirebaseSource, val pref: PreferenceSource): IRepos
 
     override suspend fun getBookListByUId(id: String): Result<List<Book>> = db.getBookListByUId(id)
 
+    override suspend fun getBookListByTitle(title: String): Result<List<Book>> = db.getBookListByTitle(title)
+
     override fun getUser(): User = pref.getUser()
 
     override fun saveUser(user: User) {

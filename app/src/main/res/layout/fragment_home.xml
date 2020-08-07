@@ -20,9 +20,11 @@
 
         <EditText
             android:id="@+id/search_box"
+            android:text="@={vm.searchbooktitle}"
             android:layout_width="match_parent"
             android:layout_height="@dimen/search_box_height"
             android:layout_marginStart="@dimen/search_box_s_margin"
+            android:paddingLeft="10dp"
             android:layout_marginEnd="@dimen/search_box_e_margin"
             android:textColor="@color/black"
             android:layout_marginTop="@dimen/main_title_margin"
@@ -37,6 +39,7 @@
             android:layout_height="@dimen/search_box_height"
             android:contentDescription="@string/search_btn"
             android:src="@drawable/ic_search"
+            android:onClick="@{() -> vm.onClickSearch()}"
             android:background="@drawable/custom_search_ic_background"
             app:layout_constraintEnd_toStartOf="@id/search_box"
             app:layout_constraintTop_toTopOf="@id/search_box" />
@@ -45,6 +48,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/today_recommend_margin"
+            android:id="@+id/rv_layout"
+            android:visibility="visible"
             android:background="@color/back_gray"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_box">
@@ -68,7 +73,40 @@
                 app:layout_constraintTop_toBottomOf="@id/today_recommend"
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/today_recommend_margin"
+            android:visibility="gone"
+            android:id="@+id/sr_layout"
+            android:background="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_box">
+
+            <TextView
+                android:id="@+id/search_result_text"
+                android:text="@string/search_result"
+                style="@style/mainTitle.todayRecommend"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/book_search_result"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:scrollbars="none"
+                android:background="@color/white"
+                android:layout_marginTop="5dp"
+                android:overScrollMode="never"
+                app:recycler_items="@{vm.bookLiveData}"
+                app:recycler_adapter="@{vm.recyclerAdapter}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search_result_text"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

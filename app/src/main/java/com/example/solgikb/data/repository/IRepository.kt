@@ -16,6 +16,7 @@ interface IRepository {
     suspend fun getCheckListByUId(id: String): Result<List<Check>>
     suspend fun getBookListById(id: List<String>): Result<List<Book>>
     suspend fun getBookListByUId(id: String): Result<List<Book>>
+    suspend fun getBookListByTitle(title: String): Result<List<Book>>
 
     fun getUser(): User
     fun saveUser(user: User)

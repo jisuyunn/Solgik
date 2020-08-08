@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.solgikb.BR
 import com.example.solgikb.R
 import com.example.solgikb.data.model.Book
+import com.example.solgikb.data.model.Result
 import com.example.solgikb.databinding.FragmentHomeBinding
 import com.example.solgikb.databinding.ItemBookBinding
 import com.example.solgikb.ui.base.BaseFragment

@@ -35,9 +35,12 @@ class HomeFragment: BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         observe(viewModel.sle) {
           if(it != ""){
               viewModel.searchBookByTitle(it)
-              initRecyclerView()
               binding.rvLayout.visibility = View.GONE
               binding.srLayout.visibility = View.VISIBLE
+          }else{
+              binding.rvLayout.visibility = View.VISIBLE
+              binding.srLayout.visibility = View.GONE
+              binding.searchBox.setText("")
           }
         }
     }

@@ -14,6 +14,7 @@
             android:id="@+id/title"
             android:text="서울시립도서관"
             style="@style/subTitle.homeTitle"
+            android:onClick="@{() -> vm.onRecMain()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>

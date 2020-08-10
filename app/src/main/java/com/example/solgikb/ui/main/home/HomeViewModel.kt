@@ -2,6 +2,7 @@ package com.example.solgikb.ui.main.home
 
 import android.app.Application
 import android.content.Intent
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
@@ -21,12 +22,18 @@ class HomeViewModel(application: Application, private val repo: IRepository): Ba
 
     val sle = SingleLiveEvent<String>()
     val searchbooktitle = MutableLiveData<String>()
-    private val _bookLiveData = MutableLiveData<String>()
-    val bookLiveData = _bookLiveData.switchMap { id ->
-        liveData(coroutineContext) {
-            val result = repo.getBookListByUId(id)
-            if (result is Result.Success) {
-                emit(result.data)
+    private val _bookLiveData = MutableLiveData<Int>()
+    val bookLiveData = _bookLiveData.switchMap { i ->
+        liveData {
+            when(i) {
+                0 -> {
+                    val result = repo.getBookListByUId("-MDjV4gJl2BciZSSsuB1")
+                    if(result is Result.Success) emit(result.data)
+                }
+                1 -> {
+                    val result = repo.getBookListByTitle(searchbooktitle.value.toString())
+                    if(result is Result.Success) emit(result.data)
+                }
             }
         }
     }
@@ -41,15 +48,21 @@ class HomeViewModel(application: Application, private val repo: IRepository): Ba
             }) {}
 
     fun recommendBookByUId(id: String) {
-        _bookLiveData.postValue(id)
+        _bookLiveData.postValue(0)
     }
 
     fun searchBookByTitle(title: String) {
-        _bookLiveData.postValue(title)
+        _bookLiveData.postValue(1)
+    }
+
+    fun onRecMain(){
+        _bookLiveData.postValue(0)
+        sle.value = ""
     }
 
     fun onClickSearch(){
         sle.value = searchbooktitle.value
+        _bookLiveData.postValue(1)
     }
 
 }

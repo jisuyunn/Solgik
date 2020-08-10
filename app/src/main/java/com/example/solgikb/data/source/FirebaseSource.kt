@@ -142,13 +142,12 @@ class FirebaseSource {
                         snapshot.children.forEach { data ->
                             val book = data.getValue(Book::class.java)
                             if(book != null) {
-                                if(book.title == title)
+                                if(book.title.contains(title))
                                     bookList.add(book)
                             }
                         }
                         cont.resume(Result.Success(bookList))
                     }
-
                     override fun onCancelled(error: DatabaseError) {
                         cont.resume(Result.Error(error.toException()))
                     }

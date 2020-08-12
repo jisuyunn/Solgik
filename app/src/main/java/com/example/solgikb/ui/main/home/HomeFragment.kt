@@ -13,12 +13,14 @@ import com.example.solgikb.databinding.FragmentHomeBinding
 import com.example.solgikb.databinding.ItemBookBinding
 import com.example.solgikb.ui.base.BaseFragment
 import com.example.solgikb.ui.base.BaseRecyclerView
+import com.example.solgikb.ui.bookcart.BookCartActivity
 import com.example.solgikb.ui.bookdetail.BookDetailActivity
 import com.example.solgikb.ui.main.MainActivity
 import com.example.solgikb.ui.prevlib.PrevLibActivity
 import com.example.solgikb.utils.INTENT_EXTRA_BOOK_ID
 import com.example.solgikb.utils.observe
 import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment: BaseFragment<FragmentHomeBinding, HomeViewModel>() {
@@ -29,6 +31,12 @@ class HomeFragment: BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override fun initView() {
         initData()
         initRecyclerView()
+        fab.setOnClickListener {
+            activity?.let {
+                val intent = Intent(context, BookCartActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     override fun observeChange() {

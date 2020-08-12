@@ -1,5 +1,6 @@
 package com.example.solgikb.di
 
+import com.example.solgikb.ui.bookcart.BookCartViewModel
 import com.example.solgikb.ui.login.LoginViewModel
 import com.example.solgikb.ui.main.MainViewModel
 import com.example.solgikb.ui.main.home.HomeViewModel
@@ -28,5 +29,9 @@ val viewModelModule = module {
 
     viewModel {
         PrevLibViewModel(get(), get())
+    }
+
+    viewModel {
+        BookCartViewModel(get(), get())
     }
 }

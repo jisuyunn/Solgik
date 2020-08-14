@@ -27,7 +27,19 @@ class RepositoryImpl(val db: FirebaseSource, val pref: PreferenceSource): IRepos
 
     override suspend fun getBookListById(id: List<String>): Result<List<Book>> = db.getBookListById(id)
 
-    override suspend fun getBookListByUId(id: String): Result<List<Book>> = db.getBookListByUId(id)
+    override suspend fun getBookListByUId(id: String): Result<List<Book>> {
+        var result = db.getBookListByUId(id)
+        val bookId = mutableListOf<String>()
+        if (result is Result.Success) {
+            result.data.forEach { book ->
+                bookId.add(book.BId)
+            }
+            result = db.getBookListById(bookId)
+            return suspendCoroutine { cont ->
+                if(result is Result.Success) cont.resume(result)
+            }
+        } else return result
+    }
 
     override suspend fun getBookListByTitle(title: String): Result<List<Book>> = db.getBookListByTitle(title)
 

@@ -78,6 +78,10 @@
         <item name="android:layout_marginLeft">@dimen/main_title_margin</item>
     </style>
 
+    <style name="bookStatus" parent="descText">
+        <item name="android:layout_marginRight">20dp</item>
+    </style>
+
     <style name="mainButton" parent="TextAppearance.AppCompat.Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

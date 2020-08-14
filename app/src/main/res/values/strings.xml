@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">SolgikB</string>
+    <string name="my_home_lib"><i>우리집 도서관</i></string>
 
     <!-- Main Activity -->
     <string name="maintab1">도서관</string>
@@ -20,6 +21,7 @@
     <string name="month_filter">1개월</string>
     <string name="three_month_filter">3개월</string>
     <string name="set_term_filter">기간 설정</string>
+    <string name="book_status_borrow"><u>대출중</u></string>
 
     <!-- Icon Description -->
     <string name="notice_btn">알림버튼</string>

@@ -13,7 +13,8 @@ class PrevLibActivity: BaseActivity<ActivityPrevLibBinding, PrevLibViewModel>() 
     override val bindingVariable: Int get() = BR.vm
 
     override fun initView() {
-
+        viewModel.setInitData()
+        binding.btnBack.setOnClickListener { this.finish() }
     }
 
     override fun observeChange() {

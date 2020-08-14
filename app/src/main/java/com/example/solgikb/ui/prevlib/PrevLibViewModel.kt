@@ -24,7 +24,7 @@ class PrevLibViewModel(application: Application, private val repo: IRepository):
         liveData {
             when(i) {
                 0,1,2 -> {
-                    val result = repo.getBookListByUId("-MDjV4gJl2BciZSSsuB1")
+                    var result = repo.getBookListByUId(repo.getUser().UId)
                     if(result is Result.Success) emit(result.data)
                 }
             }
@@ -42,7 +42,7 @@ class PrevLibViewModel(application: Application, private val repo: IRepository):
     }
 
     val recyclerAdapter = object : BaseRecyclerView.Adapter<Book, ItemBookBinding>(
-            layoutResId = R.layout.item_book,
+            layoutResId = R.layout.item_prev_book,
             bindingVariableId = BR.book,
             itemClick = { item ->
                 val intent = object : Intent(application.applicationContext, BookDetailActivity::class.java) {}
@@ -50,4 +50,7 @@ class PrevLibViewModel(application: Application, private val repo: IRepository):
                 //startActivity(intent)
             }) {}
 
+    fun setInitData() {
+        _bookLiveData.postValue(2)
+    }
 }

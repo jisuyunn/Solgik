@@ -118,7 +118,8 @@ class FirebaseSource {
 
     suspend fun getBookListByUId(id: String): Result<List<Book>> =
             suspendCoroutine { cont ->
-                bookRef.addListenerForSingleValueEvent(object : ValueEventListener{
+                val query = checkRef.orderByChild("uid").equalTo(id)
+                query.addListenerForSingleValueEvent(object : ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
                         val bookList = mutableListOf<Book>()
                         snapshot.children.forEach { data ->

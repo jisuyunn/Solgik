@@ -9,6 +9,7 @@ import androidx.lifecycle.switchMap
 import com.example.solgikb.BR
 import com.example.solgikb.R
 import com.example.solgikb.data.model.Book
+import com.example.solgikb.data.model.Check
 import com.example.solgikb.data.model.Result
 import com.example.solgikb.data.repository.IRepository
 import com.example.solgikb.databinding.ItemBookBinding
